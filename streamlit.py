@@ -1,0 +1,33 @@
+import streamlit as st
+import requests
+from  streamlit_lottie import st_lottie
+
+import pyaudio
+
+
+# ---- HEADER ---- 
+st.set_page_config(page_title="My Webpage", page_icon=":D", layout=("wide"))
+
+st.subheader( "Hello!My name is William Osorio")
+st.title("I'm an aspire web programmer.")
+st.title("I am passionate about using prgroamming to make monotaunus tasks easier.")
+st.write("[Learn More >] ")
+
+def load_lottieurl(url):  
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+lottie_coding = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_gzx4caln.json")
+
+# ---- BODY ----
+with st.container():
+    st.write("---")
+    left_column, right_column  = st.columns(2)
+
+with right_column:
+    st_lottie(lottie_coding, height="300", key = "coding" )
+
+
+ 
